@@ -190,11 +190,11 @@ class sudoku_matrix(object):
 				copy_matrix.hundred_steps()
 
 			if copy_matrix.is_valid_solution():
-				self.matrix = copy_matrix
+				self.matrix = copy_matrix.matrix
 				return
 
 
-def test()
+def test():
 	test = sudoku_matrix()
 	entries = [[0, 2, 3], [0, 5, 8], [0, 6, 9], [1, 3, 9], [1, 6, 6], [2, 2, 8], [2, 3, 5],
 	[2, 5, 4], [2, 7, 3], [3, 0, 8], [3, 2, 2], [4, 1, 1], [4, 3, 3], [4, 5, 7], [4, 7, 8],
