@@ -130,7 +130,7 @@ class sudoku_matrix(object):
 		#Note: we allow for the possibility of boxes having 0 values because
 		#in the solve() method, calling solve_random_unsolved_box() introduces
 		#the possibility of picking the wrong value, which in subsequent 
-		#calls of hundred_steps() can produce other boxes from which all 
+		#calls of hundred_steps() can produce boxes from which all 
 		#values have been eliminated. 
 
 		for row in self.matrix:
@@ -179,7 +179,9 @@ class sudoku_matrix(object):
 		self.matrix[row_index][column_index] = [random.choice(self.matrix[row_index][column_index])]
 
 	def solve(self):
+		self.unsolved = copy.deepcopy(self.matrix)
 		self.hundred_steps()
+		
 		while True:
 			copy_matrix = copy.deepcopy(self)
 
@@ -188,7 +190,8 @@ class sudoku_matrix(object):
 				copy_matrix.hundred_steps()
 
 			if copy_matrix.is_valid_solution():
-				return copy_matrix
+				self.matrix = copy_matrix
+				return
 
 
 def test()
@@ -199,7 +202,7 @@ def test()
 	[8, 2, 9], [8, 3, 1], [8, 6, 3]]
 	test.enter_values(entries)
 	print test
-	test = test.solve()
+	test.solve()
 	print test
 	
 if __name__ == '__main__':
