@@ -6,9 +6,13 @@ THE SUDOKU MATRIX
 Sudoku matrices are formed by the sudoku_matrix() constructor.
 
 Each sudoku_matrix contains a .matrix attribute that is structured as follows:
+
 •The matrix is a list 
+
 •Each matrix contains nine row lists 
+
 •Each row contains nine box lists
+
 •Each box is a list of values 1-9
 
 The solver eliminates values from a box until only one remains, 
@@ -18,10 +22,13 @@ at which point the box is solved.
 ELIMINATION OPERATIONS
 ========================
 The solver implements three basic operations to eliminate values from boxes:
+
 •get_singletons() finds boxes in a row with only one value. 
 	clear_singletons() removes these values from all other boxes in the row.
+
 •get_and_clear_uniques finds values that exist in only one box in a row, 
 	and then eliminates all other values from that box.
+
 •get_matches finds n boxes in a row containing exactly the same n values.
 	clear_matches then removes those values from all other boxes in the row.
 
@@ -29,12 +36,14 @@ The solver implements three basic operations to eliminate values from boxes:
 TRANSPOSE METHODS
 ========================
 The solver implements two transpose methods. 
+
 The purpose of these methods is to allow the solver to use the row operations
 listed above to eliminate values in columns, as well as inthe nine 3x3 grids 
 referred to as 'submatrices' in the code. 
 
 •transpose() is an ordinary matrix transpose. Each column is repositioned as 
-	the row with the matching index. 
+the row with the matching index. 
+
 •submatrix_transpose is an unusual 'transpose' that converts each 3x3 submatrix
 	into a row. 
 
@@ -53,7 +62,7 @@ The hundred_steps() method calls step() 100 times.
 solve() first calls hundred_steps().
 This is usually sufficient to solve 'easy' and 'medium' sudoku puzzles.
 
-solve() then enters a loop that copies the sudoku matrix
+solve() then enters a loop that copies the sudoku matrix and executes the following on the copy:
 
 If the matrix is unsolved, solve finds an unsolved boxes and randomly clears 
 all of its remaining values instead of one. Then hundred_steps is called. 
@@ -70,6 +79,7 @@ It solves the "world's hardest sudokus" in a few minutes.
 AREAS FOR IMPROVEMENT
 ========================
 •The solve() function does not remember its own random guesses from failed trials.
+
 •Add more advanced elimination operations to each step.
 
 suggestions? email rtunney3@gmail.com
