@@ -54,14 +54,11 @@ solve() first calls hundred_steps().
 This is usually sufficient to solve 'easy' and 'medium' sudoku puzzles.
 
 solve() then enters a loop that copies the sudoku matrix
-----If the matrix is unsolved, solve finds an unsolved boxes and randomly clears
-----all of its remaining values instead of one. Then hundred_steps is called.
 
-----This random selection/solve attempt is repeated until all boxes have no more
-----than one value. 
-
-----If the 'solved' matrix is invalid, the loop is repeated until a valid matrix 
-----is found.
+----If the matrix is unsolved, solve finds an unsolved boxes and randomly clears \n
+----all of its remaining values instead of one. Then hundred_steps is called. \n
+----This random selection/solve attempt is repeated until all boxes have no more than one value. \n 
+----If the 'solved' matrix is invalid, the loop is repeated until a valid matrix is found. \n
 
 ========================
 PERFORMANCE
